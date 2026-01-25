@@ -209,7 +209,11 @@ async def start(client, message):
 
     files_ = await get_file_details(file_id)           
     if not files_:
-        pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
+            try:
+                decoded_data = base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))
+                pre, file_id = decoded_data.decode("ascii", errors="ignore").split("_", 1)
+            except Exception:
+                return await message.reply("Invalid Link or Data!")
         try:
             msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
