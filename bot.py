@@ -17,6 +17,27 @@ from info import *
 from utils import temp
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
+import os
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+def run():
+    # Render PORT एनवायरनमेंट वेरिएबल देता है, उसे यहाँ इस्तेमाल करें
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+# सर्वर को बैकग्राउंड में शुरू करें
+keep_alive()
 
 class Bot(Client):
 
