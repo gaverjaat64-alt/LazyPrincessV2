@@ -4,4 +4,6 @@ WORKDIR /app
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
+EXPOSE 10000
+
 CMD ["python3", "bot.py"]
