@@ -89,3 +89,6 @@ CAPTION_BUTTON = "Get Updates"
 CAPTION_BUTTON_URL = "https://t.me/LazyDeveloper"
 
    # Auto Delete For Bot Sending Files #
+IS_VERIFY = True 
+VERIFY_EXPIRE = 86400  # टोकन 24 घंटे के लिए (सेकंड में)
+VERIFY_TUTORIAL = "https://t.me/YourTutorialLink" # अपना ट्यूटोरियल लिंक दें
