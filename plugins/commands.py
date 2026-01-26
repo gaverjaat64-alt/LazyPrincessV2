@@ -214,8 +214,8 @@ async def start(client, message):
                 pre, file_id = decoded_data.decode("ascii", errors="ignore").split("_", 1)
             except Exception:
                 return await message.reply("Invalid Link or Data!")
-        try:
-            msg = await client.send_cached_media(
+            try:
+                msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
                 file_id=file_id,
                 protect_content=True if pre == 'filep' else False,
